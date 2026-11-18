@@ -2,21 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Free tryouts for Sousa’s youth soccer team</title>
+  <meta name="description" content="Ages 6–10. Sign up and Sousa will email you the tryout details.">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="Sign up for tryout details for Sousa’s free-to-play soccer team in the City of Orange.">
-  <title>Sousa soccer tryout signup</title>
+  <meta name="theme-color" content="#fef5e6">
+  <link rel="canonical" href="https://trevor-made.github.io/sousa-tryout/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sousa">
+  <meta property="og:title" content="Free tryouts for Sousa’s youth soccer team">
+  <meta property="og:description" content="Ages 6–10. Sign up and Sousa will email you the tryout details.">
+  <meta property="og:url" content="https://trevor-made.github.io/sousa-tryout/">
+  <meta property="og:image" content="https://trevor-made.github.io/sousa-tryout/assets/og-image.jpg">
+  <meta property="og:image:secure_url" content="https://trevor-made.github.io/sousa-tryout/assets/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Strawberry Milkshake passes a soccer ball to Vanilla while Salted Caramel stands in goal.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free tryouts for Sousa’s youth soccer team">
+  <meta name="twitter:description" content="Ages 6–10. Sign up and Sousa will email you the tryout details.">
+  <meta name="twitter:image" content="https://trevor-made.github.io/sousa-tryout/assets/og-image.jpg">
+  <meta name="twitter:image:alt" content="Strawberry Milkshake passes a soccer ball to Vanilla while Salted Caramel stands in goal.">
+
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
   <script src="config.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
   <div class="shell">
-    <header><img src="assets/sousa-wordmark.svg" alt="Sousa" width="84" height="25"></header>
     <main>
       <div class="intro">
-        <h1 id="signup-title">Want to try out for our club? Sign up here.</h1>
-        <p>Sousa will email you the tryout details.</p>
+        <header class="brand">
+          <picture class="hero">
+            <source type="image/webp"
+                    srcset="assets/hero-640.webp 640w, assets/hero-720.webp 720w, assets/hero-1280.webp 1280w"
+                    sizes="(min-width: 960px) 330px, (max-width: 759px) and (max-height: 800px) 196px, 228px">
+            <img src="assets/hero-640.jpg"
+                 srcset="assets/hero-640.jpg 640w, assets/hero-720.jpg 720w, assets/hero-1280.jpg 1280w"
+                 sizes="(min-width: 960px) 330px, (max-width: 759px) and (max-height: 800px) 196px, 228px"
+                 width="640" height="360"
+                 alt="Strawberry Milkshake passes a soccer ball to Vanilla while Salted Caramel stands in goal."
+                 loading="eager" fetchpriority="high" decoding="async">
+          </picture>
+          <picture class="wordmark">
+            <source type="image/webp" srcset="assets/sousa-wordmark-252.webp">
+            <img class="wordmark" src="assets/sousa-wordmark-252.png" alt="Sousa" width="84" height="25">
+          </picture>
+        </header>
+        <h1 id="signup-title">Free tryouts for Sousa’s youth soccer team</h1>
+        <p>Ages 6–10. Sign up and we’ll email you the tryout details.</p>
       </div>
       <div class="form-panel">
         <form id="signup" novalidate aria-labelledby="signup-title">
@@ -35,7 +74,7 @@
               </div>
               <div class="field">
                 <label for="parent-email">Parent email</label>
-                <input id="parent-email" type="email" autocomplete="email" required aria-describedby="parent-email-error">
+                <input id="parent-email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" required aria-describedby="parent-email-error">
                 <p id="parent-email-error" class="field-error" hidden></p>
               </div>
               <div class="field">
@@ -78,14 +117,16 @@
                 </div>
               </fieldset>
             </div>
-            <button id="add-child" class="text-button" type="button" hidden>+ Add another child</button>
-            <p id="child-limit" hidden>You can add up to 6 children.</p>
-            <label class="consent-row" for="consent">
-              <input id="consent" type="checkbox" required aria-describedby="consent-error">
-              <span>OK to email me about tryouts and team updates.</span>
-            </label>
-            <p id="consent-error" class="field-error" hidden></p>
-            <button id="submit" type="submit" disabled>Sign up</button>
+            <div class="family-options">
+              <button id="add-child" class="text-button" type="button" hidden>+ Add another child</button>
+              <p id="child-limit" hidden>You can add up to 6 children.</p>
+              <label class="consent-row" for="consent">
+                <input id="consent" type="checkbox" required aria-describedby="consent-error">
+                <span>OK to email me about tryouts and team updates.</span>
+              </label>
+              <p id="consent-error" class="field-error" hidden></p>
+            </div>
+            <button id="submit" type="submit" disabled>Email me tryout details</button>
           </fieldset>
           <noscript>Turn on JavaScript to send this signup.</noscript>
         </form>

@@ -108,7 +108,7 @@
     check(parentName, 'Parent/guardian name', clean(parentName) ? '' : 'Enter a parent or guardian name.');
     const email = clean(parentEmail);
     check(parentEmail, 'Parent email', !email ? 'Enter your email address.' :
-      parentEmail.validity.valid ? '' : 'Enter a valid email address.');
+      parentEmail.validity.valid && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) ? '' : 'Enter a full email address, like name@example.com.');
     const phone = parentPhone.value.trim();
     check(parentPhone, 'Parent phone', !phone ? 'Enter a phone number.' :
       /^[0-9+ .()-]+$/.test(phone) && phone.replace(/[^0-9]/g, '').length >= 10 ? '' :
@@ -181,15 +181,20 @@
     const params = new URLSearchParams();
     entryKeys.forEach(key => params.set(config.entries[key], values[key]));
     inFlight = true;
+    submitButton.textContent = 'Sending…';
+    form.setAttribute('aria-busy', 'true');
     submitButton.disabled = true;
     fields.disabled = true;
     status.textContent = 'Sending your signup…';
     try {
       await fetch(config.formAction, { method: 'POST', mode: 'no-cors', body: params });
+      form.removeAttribute('aria-busy');
       form.hidden = true;
-      status.textContent = "Thanks! Your interest is recorded. We'll email you the tryout details. Signing up doesn't guarantee a spot.";
+      status.textContent = "Thanks for your interest! Watch your email for tryout details. Signing up doesn’t guarantee a spot.";
       status.focus();
     } catch {
+      submitButton.textContent = 'Email me tryout details';
+      form.removeAttribute('aria-busy');
       fields.disabled = false;
       submitButton.disabled = false;
       inFlight = false;
