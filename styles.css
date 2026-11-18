@@ -90,6 +90,8 @@ button:disabled { cursor: default; opacity: .65; }
   font-size: 14px;
 }
 .text-button:hover { color: var(--deep); }
+.family-options > #add-child:not([hidden]) { display: block; width: 100%; text-align: left; padding-inline: 0; }
+.family-options > .consent-row { width: 100%; }
 #child-limit { font-size: 14px; line-height: 18px; padding-block: 13px; color: var(--muted); }
 .consent-row { display: flex; align-items: center; gap: 8px; min-height: 44px; cursor: pointer; font-size: 14px; line-height: 18px; }
 .consent-row input { width: 24px; height: 24px; margin: 0; flex: 0 0 24px; accent-color: var(--blue); }
@@ -193,18 +195,6 @@ main { margin-top: 0; }
     --hero-h: clamp(72px, calc(164px - var(--pad-t) - var(--pad-b)), 110px);
   }
   .intro h1 { line-height: 24px; }
-  .family-options {
-    display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-    align-items: center;
-    column-gap: 8px;
-    margin-top: 2px;
-  }
-  .family-options > #add-child,
-  .family-options > #child-limit { grid-column: 1; grid-row: 1; }
-  .family-options > #add-child { padding-inline: 0; line-height: 18px; }
-  .family-options > .consent-row { grid-column: 2; grid-row: 1; }
-  .family-options > #consent-error { grid-column: 2; grid-row: 2; }
 }
 
 @media (min-width: 960px) {
