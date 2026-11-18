@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Sign up for tryout details for Sousa’s free-to-play soccer team in the City of Orange.">
+  <title>Sousa soccer tryout signup</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header><img src="assets/sousa-wordmark.svg" alt="Sousa" width="84" height="25"></header>
+    <main>
+      <div class="intro">
+        <h1 id="signup-title">Want to try out for our club? Sign up here.</h1>
+        <p>Sousa will email you the tryout details.</p>
+      </div>
+      <div class="form-panel">
+        <form id="signup" novalidate aria-labelledby="signup-title">
+          <section id="error-summary" hidden tabindex="-1" aria-labelledby="error-title">
+            <h2 id="error-title">Check these fields</h2>
+            <ul></ul>
+          </section>
+          <fieldset id="signup-fields">
+            <legend class="sr-only">Family signup</legend>
+            <p class="required-note">All fields are required.</p>
+            <div class="parent-grid">
+              <div class="field">
+                <label for="parent-name">Parent/guardian name</label>
+                <input id="parent-name" type="text" autocomplete="name" required aria-describedby="parent-name-error">
+                <p id="parent-name-error" class="field-error" hidden></p>
+              </div>
+              <div class="field">
+                <label for="parent-email">Parent email</label>
+                <input id="parent-email" type="email" autocomplete="email" required aria-describedby="parent-email-error">
+                <p id="parent-email-error" class="field-error" hidden></p>
+              </div>
+              <div class="field">
+                <label for="city">City</label>
+                <input id="city" type="text" autocomplete="address-level2" required aria-describedby="city-error">
+                <p id="city-error" class="field-error" hidden></p>
+              </div>
+            </div>
+            <div id="children">
+              <fieldset class="child" data-key="1">
+                <legend>Child 1</legend>
+                <div class="child-grid">
+                  <div class="field">
+                    <label for="child-1-name">Child first name</label>
+                    <input id="child-1-name" type="text" required aria-describedby="child-1-name-error">
+                    <p id="child-1-name-error" class="field-error" hidden></p>
+                  </div>
+                  <div class="field">
+                    <label for="child-1-age">Age or birth year</label>
+                    <input id="child-1-age" type="text" inputmode="numeric" required aria-describedby="child-1-age-error">
+                    <p id="child-1-age-error" class="field-error" hidden></p>
+                  </div>
+                  <div class="field">
+                    <label for="child-1-level">Playing level</label>
+                    <select id="child-1-level" required aria-describedby="child-1-level-error">
+                      <option value="" selected disabled>Select level</option>
+                      <option value="Rec">Rec</option>
+                      <option value="AYSO">AYSO</option>
+                      <option value="Club">Club</option>
+                      <option value="Competitive">Competitive</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <p id="child-1-level-error" class="field-error" hidden></p>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <button id="add-child" class="text-button" type="button" hidden>+ Add another child</button>
+            <p id="child-limit" hidden>You can add up to 6 children.</p>
+            <label class="consent-row" for="consent">
+              <input id="consent" type="checkbox" required aria-describedby="consent-error">
+              <span>OK to email me about tryouts and team updates.</span>
+            </label>
+            <p id="consent-error" class="field-error" hidden></p>
+            <button id="submit" type="submit" disabled>Sign up</button>
+          </fieldset>
+          <noscript>Turn on JavaScript to send this signup.</noscript>
+        </form>
+        <p id="submission-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
+        <p id="child-announcement" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
