@@ -105,10 +105,17 @@ button:disabled { cursor: default; opacity: .65; }
 noscript { display: block; margin-top: 8px; }
 @media (max-width: 759px) and (max-height: 900px) {
   .parent-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .parent-grid .field:first-child { grid-column: 1 / -1; }
+  .parent-grid .field:nth-child(-n+2) { grid-column: 1 / -1; }
+}
+@media (max-width: 759px) and (max-height: 800px) {
+  body, .form-panel { padding-block: 8px; }
+  main { margin-top: 4px; gap: 4px; }
+  .parent-grid, .child-grid { row-gap: 4px; }
+  .child { margin-top: 6px; }
 }
 @media (min-width: 760px) {
-  .parent-grid, .child-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .parent-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .child-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .child-grid .field:first-child { grid-column: auto; }
 }
 @media (min-width: 960px) {

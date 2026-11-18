@@ -15,7 +15,7 @@
   const consent = document.querySelector('#consent');
   const consentText = document.querySelector('.consent-row span').textContent;
   const levels = new Set(['Rec', 'AYSO', 'Club', 'Competitive', 'Other']);
-  const entryKeys = ['parentName', 'parentEmail', 'city', 'childCount', 'children', 'consent'];
+  const entryKeys = ['parentName', 'parentEmail', 'parentPhone', 'city', 'childCount', 'children', 'consent'];
   let nextKey = 1;
   let validationAttempted = false;
   let inFlight = false;
@@ -103,11 +103,16 @@
     }
     const parentName = document.querySelector('#parent-name');
     const parentEmail = document.querySelector('#parent-email');
+    const parentPhone = document.querySelector('#parent-phone');
     const city = document.querySelector('#city');
     check(parentName, 'Parent/guardian name', clean(parentName) ? '' : 'Enter a parent or guardian name.');
     const email = clean(parentEmail);
     check(parentEmail, 'Parent email', !email ? 'Enter your email address.' :
       parentEmail.validity.valid ? '' : 'Enter a valid email address.');
+    const phone = parentPhone.value.trim();
+    check(parentPhone, 'Parent phone', !phone ? 'Enter a phone number.' :
+      /^[0-9+ .()-]+$/.test(phone) && phone.replace(/[^0-9]/g, '').length >= 10 ? '' :
+        'Enter a phone number with at least 10 digits.');
     check(city, 'City', clean(city) ? '' : 'Enter your city.');
     childBlocks().forEach((block, index) => {
       const [name, age, level] = block.querySelectorAll('input, select');
@@ -164,6 +169,7 @@
     const values = {
       parentName: clean(document.querySelector('#parent-name')),
       parentEmail: clean(document.querySelector('#parent-email')),
+      parentPhone: document.querySelector('#parent-phone').value.trim(),
       city: clean(document.querySelector('#city')),
       childCount: String(blocks.length),
       children: blocks.map((block, index) => {
