@@ -61,7 +61,6 @@ h1 {
 .child { margin-top: 12px; }
 .child legend { font-weight: 800; line-height: 22px; padding-bottom: 6px; }
 .child-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.child-grid .field:first-child { grid-column: 1 / -1; }
 .field label { display: block; margin-bottom: 4px; font-size: 14px; line-height: 18px; font-weight: 800; }
 input, select, button { font: inherit; }
 input:not([type=checkbox]), select {
@@ -111,8 +110,7 @@ noscript { display: block; margin-top: 8px; }
 }
 @media (min-width: 760px) {
   .parent-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .child-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .child-grid .field:first-child { grid-column: auto; }
+  .child-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) repeat(2, minmax(max-content, 1fr)); }
 }
 @media (min-width: 960px) {
   .shell { max-width: 1120px; margin-inline: auto; }

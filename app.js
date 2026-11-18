@@ -15,6 +15,7 @@
   const consent = document.querySelector('#consent');
   const consentText = document.querySelector('.consent-row span').textContent;
   const levels = new Set(['Rec', 'AYSO', 'Club', 'Competitive', 'Other']);
+  const genders = new Set(['Boy', 'Girl']);
   const entryKeys = ['parentName', 'parentEmail', 'parentPhone', 'city', 'childCount', 'children', 'consent'];
   let nextKey = 1;
   let validationAttempted = false;
@@ -115,13 +116,14 @@
         'Enter a phone number with at least 10 digits.');
     check(city, 'City', clean(city) ? '' : 'Enter your city.');
     childBlocks().forEach((block, index) => {
-      const [name, age, level] = block.querySelectorAll('input, select');
+      const [name, age, level, gender] = block.querySelectorAll('input, select');
       const prefix = `Child ${index + 1}`;
       check(name, `${prefix}: Child first name`, clean(name) ? '' : 'Enter the child’s first name.');
       const ageValue = clean(age);
       check(age, `${prefix}: Age or birth year`, !ageValue ? 'Enter an age or birth year.' :
         validAge(ageValue) ? '' : 'Enter an age or a four-digit birth year.');
       check(level, `${prefix}: Playing level`, levels.has(level.value) ? '' : 'Select a playing level.');
+      check(gender, `${prefix}: Gender`, genders.has(gender.value) ? '' : 'Select a gender.');
     });
     check(consent, 'Consent', consent.checked ? '' : 'Check the box to agree to tryout and team emails.');
     summaryList.replaceChildren();
@@ -173,8 +175,8 @@
       city: clean(document.querySelector('#city')),
       childCount: String(blocks.length),
       children: blocks.map((block, index) => {
-        const [name, age, level] = block.querySelectorAll('input, select');
-        return `Child ${index + 1}: ${clean(name)} | ${clean(age)} | ${level.value}`;
+        const [name, age, level, gender] = block.querySelectorAll('input, select');
+        return `Child ${index + 1}: ${clean(name)} | ${clean(age)} | ${level.value} | Gender: ${gender.value}`;
       }).join('\n'),
       consent: config.consentValue
     };
