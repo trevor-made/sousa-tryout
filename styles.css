@@ -1,12 +1,14 @@
 @font-face {
   font-family: Archivo;
-  src: url('assets/archivo-black-subset.woff') format("woff");
+  src: url('assets/archivo-black-subset.woff2') format("woff2"),
+       url('assets/archivo-black-subset.woff') format("woff");
   font-weight: 900;
   font-display: swap;
 }
 @font-face {
   font-family: Nunito;
-  src: url('assets/nunito-sans-subset.woff') format("woff");
+  src: url('assets/nunito-sans-subset.woff2') format("woff2"),
+       url('assets/nunito-sans-subset.woff') format("woff");
   font-weight: 400 900;
   font-display: swap;
 }
@@ -235,4 +237,35 @@ main { margin-top: 0; }
 }
 @media (max-width: 759px) and (max-height: 700px) {
   .hero img { aspect-ratio: 16 / 7; }
+}
+
+@media (max-width: 480px) and (max-height: 844px) {
+  main { grid-template-columns: minmax(0, 1fr); }
+  .hero {
+    /* Default one-child layout: 626px outside the art and body
+       insets, plus 8px of room for rounding and small differences. */
+    --layout-reserve: 634px;
+    --crop-height: 7.5;
+    width: calc(
+      max(72px, 100svh - var(--pad-t) - var(--pad-b) - var(--layout-reserve))
+      * 16 / var(--crop-height)
+    );
+  }
+
+  .hero img {
+    aspect-ratio: 16 / var(--crop-height);
+  }
+}
+
+@media (max-width: 480px) and (max-height: 800px) {
+  .parent-grid .field:nth-child(-n+2) {
+    grid-column: auto;
+  }
+
+  .hero {
+    /* Two parent rows and the existing compact spacing use 545px
+       outside the art and body insets. */
+    --layout-reserve: 553px;
+    --crop-height: 7.2;
+  }
 }
